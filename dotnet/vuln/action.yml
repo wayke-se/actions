@@ -1,0 +1,12 @@
+name: .NET Vulnerability Scanner
+description: Source Code SAST scanners for .NET
+inputs:
+  nuget-token:
+    description: GitHub token to resolve private nugets
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+  args: [
+    "--nugettoken", "${{ inputs.nuget-token }}"
+  ]

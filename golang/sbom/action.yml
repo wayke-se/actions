@@ -1,0 +1,16 @@
+name: Go SBOM Scanner
+description: A Software Bill of Materials scanner
+inputs:
+  go-pkg-token:
+    description: GitHub token to resolve private modules
+    required: false
+  image:
+    description: Include a built Docker image in the scan
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+  args: [
+    "--gopkgtoken", "${{ inputs.go-pkg-token }}",
+    "--docker", "${{ inputs.image }}"
+  ]

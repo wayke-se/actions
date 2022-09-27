@@ -1,0 +1,22 @@
+name: Go Vulnerability Scanner
+description: Source Code SAST scanners for Go
+inputs:
+  go-pkg-token:
+    description: GitHub token to resolve private modules
+    required: false
+  govulncheck:
+    description: Execute action using specific govulncheck version
+    required: false
+    default: latest
+  nancy:
+    description: Execute action using specific Sonatype Nancy version
+    required: false
+    default: 1.0.39
+runs:
+  using: docker
+  image: Dockerfile
+  args: [
+    "--gopkgtoken", "${{ inputs.go-pkg-token }}",
+    "--govulncheck", "${{ inputs.govulncheck }}",
+    "--nancy", "${{ inputs.nancy }}"
+  ]

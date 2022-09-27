@@ -1,0 +1,12 @@
+name: Docker Vulnerability Scanner
+description: Docker SAST scanner
+inputs:
+  image:
+    description: Execute SAST for built Docker image
+    required: true
+runs:
+  using: docker
+  image: Dockerfile
+  args: [
+    "--docker", "${{ inputs.image }}"
+  ]
