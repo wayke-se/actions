@@ -25,7 +25,7 @@ dotnet restore
 
 echo "==> Running vulnerability scanner..."
 RESULT=$(dotnet list package --vulnerable --include-transitive)
-if ! test $(echo "${RESULT}" | grep -cm 1 "following vulnerable packages") -ne 0; then
+if test $(echo "${RESULT}" | grep -cm 1 "following vulnerable packages") -ne 0; then
     echo "${RESULT}"
     printf "\n${COLRED}[Failure]${COLDEFAULT} ${COLYELLOW}dotnet${COLDEFAULT} found vulnerabilities.\n"
     exit 1
