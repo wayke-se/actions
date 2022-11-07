@@ -30,6 +30,7 @@ if [ ! -z ${GOPKGTOKEN} ]; then
     git config --global url."https://${GOPKGTOKEN}@github.com".insteadOf "https://github.com"
 fi
 
+unset GOROOT
 GOPRIVATE=github.com/wayke-se/* go mod download
 
 echo "==> Installing/updating govulncheck@${GOVULNCHECK_VERSION}..."
